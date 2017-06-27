@@ -38,16 +38,8 @@ def process_file(filename):
     if ext in extensions:
         wait_until_done_growing(filename)
         print filename
-        #start = time.time()
         run_command(parse_command(filename))
         run_command("mv %s %s" % (filename, done_folder))
-        #end = time.time()
-        #print end - start
-    """
-    else:
-        #print "%s does not match extension pattern %s" % (filename, extension)
-        pass
-    """
 
 class Handler(PatternMatchingEventHandler):
     patterns = ["*%s" % ext for ext in extensions]
