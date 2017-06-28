@@ -85,7 +85,7 @@ def main():
             sys.exit()
     print "destination folder: %s" % dest_dir
 
-    # process existing files matching extension
+    # process existing files in current working directory
     for filename in os.listdir("."):
         process_file(filename)
 
