@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-# comment
-
 ### Customize
 # watch for files with the following extensions
 extensions = [".tif", ".tiff", ".mrcs"]
