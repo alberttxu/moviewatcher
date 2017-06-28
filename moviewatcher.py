@@ -59,7 +59,7 @@ def process_file(filename):
         start = time.time()
         print "started processing %s" % filename
         if run_command(parse_commandfile(filename)):
-            print "Error from command.txt file, exiting..."
+            print "Error from command file, exiting..."
             raise KeyboardInterrupt
         else:
             end = time.time()
