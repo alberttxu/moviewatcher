@@ -16,7 +16,7 @@ from watchdog.events import PatternMatchingEventHandler
 
 ### globals
 parser = argparse.ArgumentParser(description="")
-parser.add_argument("-cmd", "--command",
+parser.add_argument("-c", "--command",
                     help="command file",
                     required=True
                     )
