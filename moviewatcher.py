@@ -26,6 +26,8 @@ parser.add_argument("-d", "--dest",
                     )
 args = vars(parser.parse_args())
 dest_dir = args["dest"]
+if dest_dir[-1] == "/":
+    dest_dir = dest_dir[:-1]
 with open(args["command"]) as commandfile:
     unparsed_command = " ".join(line.strip() for line in commandfile
                                               if line.strip()[0] != "#")
