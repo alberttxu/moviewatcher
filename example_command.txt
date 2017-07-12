@@ -1,6 +1,6 @@
 MotionCor2-01-30-2017
 -inmrc (filename)
--outmrc (dest)/(basename).mrc
+-outmrc (dest)/(basename)_ali.mrc
 -FtBin 2
 -Patch 5 5
 -FmDose 0.8
