@@ -1,2 +1,2 @@
 # moviewatcher
-work in progress
+Inspired by David Mastronarde's framewatcher.
