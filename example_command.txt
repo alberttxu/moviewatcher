@@ -1,0 +1,15 @@
+MotionCor2-01-30-2017
+-intiff (filename)
+-outmrc (dest)/(basename).mrc
+-FtBin 2
+-Patch 5 5
+-fmref -1
+-FmDose 0.8
+-FlipGain 1
+-Throw 2 and -Trunc 0
+-PixSize 0.584
+-align 1
+-kv 200
+-LogFile (dest)/motioncor_(basename).log
+-GPU 0 1
+>> (dest)/stdout_(basename).log
