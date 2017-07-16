@@ -1,6 +1,14 @@
 # moviewatcher
 Inspired by David Mastronarde's framewatcher. moviewatcher monitors the current working directory for any files with the mrcs or tif/tiff extensions.
 
+### Installation
+1. Install Python
+2. Install the Python package watchdog
+```
+pip install watchdog
+```
+3. add moviewatcher anywhere in your PATH.
+
 ### A quick example:
 
 1. Download the repository and cd into it.
@@ -12,7 +20,7 @@ cd moviewatcher
 
 3. Start moviewatcher. Done. The original movie and all the output files will end up in *done_folder*.
 ```
-./moviewatcher.py --command command_file.txt --dest done_folder
+./moviewatcher --command command_file.txt --dest done_folder
 ```
 
 
