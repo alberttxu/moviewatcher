@@ -9,5 +9,5 @@ MotionCor2-01-30-2017
 -Align 1
 -kV 300
 -Bft 150
--Gpu 0 1
+-Gpu 0
 >> (dest)/stdout_(basename).log
