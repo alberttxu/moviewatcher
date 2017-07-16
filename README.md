@@ -4,7 +4,7 @@ Inspired by David Mastronarde's framewatcher.
 moviewatcher monitors the current working directory for any files with the mrcs or tif/tiff extensions.
 
 
-Download an example unaligned micrograph stack from the Relion 2.1 tutorial test data
+1. Download an example unaligned micrograph stack from the Relion 2.1 tutorial test data
 https://drive.google.com/uc?export=download&id=0BwXH3eSej0nHam5jZWNuOHlxeWc
 
 
@@ -15,7 +15,7 @@ COMMAND  Command file for MotionCor2
 DEST     Directory to move each initial mrcs/tif file after MotionCor2 finishes processing it. A new folder will be created if DEST does not already exist.
 
 
-*./moviewatcher.py --command command_file.txt --dest done_folder*
+2. ```./moviewatcher.py --command command_file.txt --dest done_folder```
 
 
 ### Command file syntax:
