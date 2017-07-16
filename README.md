@@ -48,4 +48,5 @@ The syntax is sh shell with a few differences. Multiple lines are joined togethe
 
 
 ### Tips
-  - If you just want to move the raw files without processing, just leave the command file blank.
+  - If you just want to move the raw files without processing, leave the command file blank.
+  - You can use other programs to align such as Unblur and alignframes.
