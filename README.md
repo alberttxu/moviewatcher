@@ -1,5 +1,5 @@
 # moviewatcher
-Inspired by David Mastronarde's framewatcher. moviewatcher monitors the current working directory for any files with the mrcs or tif/tiff extensions.
+Inspired by David Mastronarde's framewatcher. moviewatcher monitors the current working directory for any files with the mrcs or tif/tiff extensions. While moviewatcher is running, any new files that appear in the running directory will automatically be processed by a command specified in a command file.
 
 
 ### Requirements
@@ -49,4 +49,5 @@ The syntax is sh shell with a few differences. Multiple lines are joined togethe
 
 ### Tips
   - If you just want to move the raw files without processing, leave the command file blank.
+  - The MotionCor2 output files don't have to go in the same folder as the DEST folder for the original data.
   - You can use other programs to align such as Unblur and alignframes.
