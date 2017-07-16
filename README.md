@@ -32,7 +32,7 @@ sudo mv moviewatcher /usr/local/bin
 ### Usage: moviewatcher.py -c/--command COMMAND -d/--dest DEST
 #### Warning! Do not make DEST the same as the current working directory. This will cause an infinite loop.
 
-COMMAND  Command file for MotionCor2
+COMMAND  is the command file
 
 DEST     is the directory to move each initial mrcs/tif file after MotionCor2 finishes processing it. A new folder will be created if DEST does not already exist.
 
@@ -48,6 +48,6 @@ The syntax is sh shell with a few differences. Multiple lines are joined togethe
 
 
 ### Tips
-  - If you just want to move the raw files without processing, leave the command file blank.
+  - If you just want to automatically move the originial data without processing, leave the command file blank.
   - The MotionCor2 output files don't have to go in the same folder as the DEST folder for the original data.
   - You can use other programs to align such as Unblur and alignframes.
