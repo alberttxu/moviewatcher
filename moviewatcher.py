@@ -65,7 +65,7 @@ def process_file(filename):
             raise KeyboardInterrupt
         else:
             end = time.time()
-            print "finished processing %s in %.3f s" % (filename, end - start)
+            print "finished processing %s in %.3fs" % (filename, end - start)
             print "moving %s to %s" % (filename, dest_dir)
             run_command("mv %s %s" % (filename, dest_dir))
 ###
