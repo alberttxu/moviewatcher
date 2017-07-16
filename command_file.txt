@@ -1,3 +1,4 @@
+# Comment
 MotionCor2-01-30-2017
 -InMrc (filename)
 -OutMrc (dest)/(basename)_ali.mrc
