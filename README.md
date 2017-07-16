@@ -18,8 +18,8 @@ Command file syntax:
 
 The syntax is sh shell with a few differences.
 
-(filename)  is replaced with a discovered mrcs/tif file. e.g. Falcon_2012_06_12-15_56_10_0_movie.mrcs
+(filename)	is replaced with a discovered mrcs/tif file. e.g. Falcon_2012_06_12-15_56_10_0_movie.mrcs
 
-(basename)  same as (filename) minus the extension. e.g. Falcon_2012_06_12-15_56_10_0_movie
+(basename)	same as (filename) minus the extension. e.g. Falcon_2012_06_12-15_56_10_0_movie
 
-(dest)      is replaced with the --dest argument in the moviewatcher command. e.g. done_folder
+(dest)			is replaced with the --dest argument in the moviewatcher command. e.g. done_folder
