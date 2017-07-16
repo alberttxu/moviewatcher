@@ -1,11 +1,12 @@
 MotionCor2-01-30-2017
--inmrc (filename)
--outmrc (dest)/(basename)_ali.mrc
--FtBin 2
--Patch 5 5
--FmDose 0.8
--PixSize 1.08
--align 1
--kv 200
+-InMrc (filename)
+-OutMrc (dest)/(basename)_ali.mrc
 -LogFile (dest)/motioncor_(basename).log
+-Patch 5 5
+-FmDose 1
+-PixSize 3.54
+-Align 1
+-kV 300
+-Bft 150
+-Gpu 0 1
 >> (dest)/stdout_(basename).log
