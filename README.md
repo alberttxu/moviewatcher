@@ -10,7 +10,7 @@ pip install watchdog
 ```
 
 
-### A quick example:
+### Getting Started
 
 1. Download the repository and cd into it.
 ```
@@ -38,10 +38,14 @@ DEST     is the directory to move each initial mrcs/tif file after MotionCor2 fi
 
 ### Command file syntax:
 
-The syntax is sh shell with a few differences.
+The syntax is sh shell with a few differences. Multiple lines are joined together with spaces. To add comments, use *#* as the first non-whitespace character of a line.
 
   - (filename)  is replaced with a discovered mrcs/tif file. e.g. *Falcon_2012_06_12-15_56_10_0_movie.mrcs*
 
   - (basename)  is the same as (filename) without the extension. e.g. *Falcon_2012_06_12-15_56_10_0_movie*
 
   - (dest)      is replaced with the --dest argument in the moviewatcher command. e.g. *done_folder*
+
+
+### Tips
+  - If you just want to move the raw files without processing, just leave the command file blank.
