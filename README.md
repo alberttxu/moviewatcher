@@ -1,17 +1,17 @@
 # moviewatcher
 Inspired by David Mastronarde's framewatcher. moviewatcher monitors the current working directory for any files with the mrcs or tif/tiff extensions.
 
-A quick example
+### A quick example:
 
-1. Download this repository and cd into it
+1. Download the repository and cd into it.
 ```
 git clone https://github.com/alberttxu/moviewatcher
 cd moviewatcher
 ```
-2. Download an example unaligned micrograph stack from the Relion 2.1 tutorial test data
-https://drive.google.com/uc?export=download&id=0BwXH3eSej0nHam5jZWNuOHlxeWc
+2. Download an example unaligned micrograph stack from the Relion 2.1 tutorial test data; https://drive.google.com/uc?export=download&id=0BwXH3eSej0nHam5jZWNuOHlxeWc
 
-3. ```./moviewatcher.py --command command_file.txt --dest done_folder```
+3. Start moviewatcher. Done.
+```./moviewatcher.py --command command_file.txt --dest done_folder```
 
 
 ### Usage: moviewatcher.py -c/--command COMMAND -d/--dest DEST
