@@ -18,7 +18,7 @@ from watchdog.events import PatternMatchingEventHandler
 parser = argparse.ArgumentParser(description="")
 parser.add_argument("-c", "--command",
                     help="command file",
-                    required=True
+                    required=False
                     )
 parser.add_argument("-d", "--dest",
                     help="destination folder of processed files",
@@ -28,13 +28,16 @@ args = vars(parser.parse_args())
 dest_dir = args["dest"]
 if dest_dir[-1] == "/":
     dest_dir = dest_dir[:-1]
-with open(args["command"]) as commandfile:
-    unparsed_command = " ".join(line.strip() for line in commandfile
-                                              if line.strip()[0] != "#")
+if args["command"]:
+    with open(args["command"]) as commandfile:
+        unparsed_command = " ".join(line.strip() for line in commandfile
+                                                 if line.strip()[0] != "#")
 ###
 
 ### helper functions
 def parse_commandfile(filename):
+    if not args["command"]:
+        return ""
     # read parameters from file
     basename, ext = os.path.splitext(filename)
     command = unparsed_command.replace("(filename)", filename)
