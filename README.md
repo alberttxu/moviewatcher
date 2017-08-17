@@ -48,6 +48,6 @@ The syntax is sh shell with a few differences. Multiple lines are joined togethe
 
 
 ### Tips
-  - If you just want to automatically move the originial data without processing, leave the command file blank.
+  - If you just want to automatically move the originial data without processing, don't use --command.
   - The MotionCor2 output files don't have to go in the same folder as the DEST folder for the original data.
   - You can use other programs to align such as Unblur and alignframes.
