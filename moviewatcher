@@ -24,6 +24,12 @@ parser.add_argument("-d", "--dest",
                     help="destination folder of processed files",
                     required=True
                     )
+parser.add_argument("-ext", "--extension",
+                    help="primary extension",
+                    required=False
+                    )
+
+
 args = vars(parser.parse_args())
 dest_dir = args["dest"]
 if dest_dir[-1] == "/":
@@ -31,6 +37,8 @@ if dest_dir[-1] == "/":
 if args["command"]:
     with open(args["command"]) as commandfile:
         unparsed_command = commandfile.read()
+if args["extension"]:
+    extensions.append(args["extension"])
 
 ###
 
@@ -60,7 +68,7 @@ def process_file(filename):
     if filename[:2] == "./":
         filename = filename[2:]
     ext = os.path.splitext(filename)[1]
-    if ext in extensions:
+    if ext in extensions or args["extension"] in filename:
         wait_until_done_growing(filename)
         start = time.time()
         print "started processing %s" % filename
