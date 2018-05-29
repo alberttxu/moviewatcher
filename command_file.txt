@@ -1,13 +1,13 @@
 # edit if MotionCor2-01-30-2017 is not in PATH
-MotionCor2-01-30-2017
--InMrc (filename)
--OutMrc (dest)/(basename)_ali.mrc
--LogFile (dest)/motioncor_(basename).log
--Patch 5 5
--FmDose 1
--PixSize 3.54
--Align 1
--kV 300
--Bft 150
--Gpu 0
+MotionCor2-01-30-2017 \
+-InMrc (filename) \
+-OutMrc (dest)/(basename)_ali.mrc \
+-LogFile (dest)/motioncor_(basename).log \
+-Patch 5 5 \
+-FmDose 1 \
+-PixSize 3.54 \
+-Align 1 \
+-kV 300 \
+-Bft 150 \
+-Gpu 0 \
 >> (dest)/stdout_(basename).log
