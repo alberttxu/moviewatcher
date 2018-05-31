@@ -6,14 +6,13 @@ extensions = [".tif", ".tiff", ".mrcs"]
 
 import argparse
 import os
-from os.path import getsize
-import sys
 import subprocess
+import sys
 import time
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-# globals
+# args
 parser = argparse.ArgumentParser(description="")
 parser.add_argument("-c", "--command",
                     help="command file",
@@ -27,7 +26,12 @@ parser.add_argument("-ext", "--extension",
                     help="primary extension",
                     required=False
                     )
+#parser.add_argument("-t", "--target",
+                    #help="directory to monitor",
+                    #required=False
+                    #)
 
+# globals
 args = vars(parser.parse_args())
 dest_dir = args["dest"]
 if dest_dir[-1] == "/":
@@ -39,6 +43,13 @@ if args["extension"]:
     extensions.append(args["extension"])
 
 # helper functions
+def wait_until_done_growing(filename):
+    size = os.path.getsize(filename)
+    time.sleep(1)
+    while os.path.getsize(filename) - size:
+        size = os.path.getsize(filename)
+        time.sleep(1)
+
 def parse_commandfile(filename, ext):
     if not args["command"]:
         return ""
@@ -50,21 +61,14 @@ def parse_commandfile(filename, ext):
     print(command)
     return command
 
-def wait_until_done_growing(filename):
-    size = getsize(filename)
-    time.sleep(1)
-    while getsize(filename) - size:
-        size = getsize(filename)
-        time.sleep(1)
-
 def process_file(filename):
     if filename[:2] == "./":
         filename = filename[2:]
-    #ext = os.path.splitext(filename)[1]
     if args["extension"]:
         ext = filename[filename.rfind(args["extension"]):]
     else:
         ext = os.path.splitext(filename)[1]
+
     if ext in extensions:
         wait_until_done_growing(filename)
         start = time.time()
@@ -99,7 +103,7 @@ def main():
     for filename in os.listdir("."):
         process_file(filename)
 
-    # watchdog
+    # watch for new files
     observer = Observer()
     observer.schedule(Handler(), path=".")
     observer.start()
