@@ -96,7 +96,7 @@ def main():
     print("destination folder: %s" % dest_dir)
 
     # process existing files in current working directory
-    for filename in os.listdir("."):
+    for filename in sorted(os.listdir(".")):
         process_file(filename)
 
     # watch for new files
