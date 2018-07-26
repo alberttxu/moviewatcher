@@ -43,6 +43,7 @@ def wait_until_done_growing(filename):
     size = os.path.getsize(filename)
     while size == 0:
         time.sleep(1)
+        size = os.path.getsize(filename)
     time.sleep(0.5)
     while os.path.getsize(filename) - size:
         size = os.path.getsize(filename)
