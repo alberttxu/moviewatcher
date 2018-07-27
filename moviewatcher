@@ -9,34 +9,30 @@ import os
 import subprocess
 import sys
 import time
-from watchdog.observers import Observer
-from watchdog.events import PatternMatchingEventHandler
 
-# args
+# flags
 parser = argparse.ArgumentParser(description="")
 parser.add_argument("-c", "--command",
                     help="command file",
-                    required=False
-                    )
+                    required=False)
 parser.add_argument("-d", "--dest",
                     help="destination folder of processed files",
-                    required=True
-                    )
+                    required=True)
 parser.add_argument("-ext", "--extension",
-                    help="primary extension",
-                    required=False
-                    )
+                    help="primary extension; if specified, the default "
+                    "'.tif', '.tiff', and '.mrcs' extensions will be disabled",
+                    required=False)
 
 # globals
-args = vars(parser.parse_args())
-dest_dir = args["dest"]
+flags = vars(parser.parse_args())
+dest_dir = flags["dest"]
 if dest_dir[-1] == "/":
     dest_dir = dest_dir[:-1]
-if args["command"]:
-    with open(args["command"]) as commandfile:
+if flags["command"]:
+    with open(flags["command"]) as commandfile:
         unparsed_command = commandfile.read()
-if args["extension"]:
-    extensions.append(args["extension"])
+if flags["extension"]:
+    extensions.append(flags["extension"])
 
 # helper functions
 def wait_until_done_growing(filename):
@@ -50,7 +46,7 @@ def wait_until_done_growing(filename):
         time.sleep(1)
 
 def parse_commandfile(filename, ext):
-    if not args["command"]:
+    if not flags["command"]:
         return ""
     basename = filename[:filename.rfind(ext)]
     # read parameters from file
@@ -63,8 +59,8 @@ def parse_commandfile(filename, ext):
 def process_file(filename):
     if filename[:2] == "./":
         filename = filename[2:]
-    if args["extension"]:
-        ext = filename[filename.rfind(args["extension"]):]
+    if flags["extension"]:
+        ext = filename[filename.rfind(flags["extension"]):]
     else:
         ext = os.path.splitext(filename)[1]
 
@@ -81,15 +77,8 @@ def process_file(filename):
             print("moving %s to %s" % (filename, dest_dir))
             subprocess.call("mv %s %s" % (filename, dest_dir), shell=True)
 
-# watchdog handler
-class Handler(PatternMatchingEventHandler):
-    patterns = ["*%s" % ext for ext in extensions]
 
-    def on_created(self, event):
-        process_file(event.src_path)
-
-
-def main():
+if __name__ == "__main__":
     if not os.path.isdir(dest_dir):
         print("directory %s does not exist" % dest_dir)
         print("creating directory %s" % dest_dir)
@@ -98,21 +87,12 @@ def main():
             sys.exit()
     print("destination folder: %s" % dest_dir)
 
-    # process existing files in current working directory
-    for filename in sorted(os.listdir(".")):
-        process_file(filename)
-
-    # watch for new files
-    observer = Observer()
-    observer.schedule(Handler(), path=".")
-    observer.start()
     try:
         while True:
+            # process existing files in current working directory
+            for filename in sorted(os.listdir(".")):
+                process_file(filename)
             time.sleep(1)
     except KeyboardInterrupt:
-        observer.stop()
-    finally:
-        observer.join()
+        pass
 
-if __name__ == "__main__":
-    main()
