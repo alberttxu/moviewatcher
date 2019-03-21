@@ -22,6 +22,10 @@ parser.add_argument("-ext", "--extension",
                     help="primary extension; if specified, the default "
                     "'.tif', '.tiff', and '.mrcs' extensions will be disabled",
                     required=False)
+parser.add_argument("-w", "--no-last",
+                    help="don't process most recent file; framewatcher needs the "
+                    "most recent ali.mrc to make jpg thumbnails",
+                    action="store_true")
 
 # globals
 flags = vars(parser.parse_args())
@@ -90,9 +94,14 @@ if __name__ == "__main__":
     try:
         while True:
             # process existing files in current working directory
-            for filename in sorted(os.listdir(".")):
+            if flags["no_last"]:
+                files = sorted(f for f in os.listdir(".") if f.endswith("ali.mrc"))
+                files = files[:-1]
+            else:
+                files = sorted(os.listdir("."))
+            for filename in files:
                 process_file(filename)
-            time.sleep(1)
+            time.sleep(10)
     except KeyboardInterrupt:
         pass
 
